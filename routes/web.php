@@ -16,3 +16,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+$router->group(['prefix' => 'api/'], function () use ($router) {
+    $router->get('allFriends', 'FriendsController@all');
+    $router->post('createFriend', 'FriendsController@createFriend');
+    $router->get('getFriend/{id}', 'FriendsController@getById');
+    $router->put('updateFriend/{id}', 'FriendsController@updateFriend');
+    $router->delete('deleteFriend/{id}', 'FriendsController@deleteFriend');
+});
